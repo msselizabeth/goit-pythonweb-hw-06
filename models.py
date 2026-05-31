@@ -21,7 +21,7 @@ class Student(Base):
     fullname: Mapped[str] = mapped_column(String(120), nullable=False)
     group_id: Mapped[int | None] = mapped_column(ForeignKey('groups.id', ondelete="SET NULL"))
     
-    group: Mapped['Group' | None] = relationship(back_populates='students')
+    group: Mapped[Group | None] = relationship(back_populates='students')
     grades: Mapped[list["Grade"]] = relationship(back_populates='student', cascade="all, delete-orphan")
 
 
@@ -41,7 +41,7 @@ class Subject(Base):
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     
     teacher_id: Mapped[int | None] = mapped_column(ForeignKey('teachers.id', ondelete="SET NULL"))
-    teacher: Mapped["Teacher" | None] = relationship(back_populates='subjects')
+    teacher: Mapped[Teacher | None] = relationship(back_populates='subjects')
     
     grades: Mapped[list["Grade"]] = relationship(back_populates='subject', cascade="all, delete-orphan")
 
@@ -55,7 +55,7 @@ class Grade(Base):
     grade_date: Mapped[date] = mapped_column(Date, nullable=False)
 
     student_id: Mapped[int] = mapped_column(ForeignKey('students.id', ondelete="CASCADE"))
-    student: Mapped["Student"] = relationship(back_populates='grades')
+    student: Mapped[Student] = relationship(back_populates='grades')
        
     subject_id: Mapped[int] = mapped_column(ForeignKey('subjects.id', ondelete="CASCADE"))
-    subject: Mapped["Subject"] = relationship(back_populates='grades')
+    subject: Mapped[Subject] = relationship(back_populates='grades')
