@@ -1,3 +1,9 @@
 sql
 docker-compose_explanation.yaml
 .env
+
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
