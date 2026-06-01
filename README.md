@@ -32,14 +32,14 @@ docker exec -it python_web_hw_6_app bash
 # Apply migrations to the latest revision
 alembic upgrade head
 
-# Generate and insert dummy data
+# Generate and insert fake data
 python seed.py
 ```
 
 ### 4. Run Queries
 
 ```bash
-# Execute the predefined SQLAlchemy 2.0 select queries
+# Execute select queries
 python my_select.py
 ```
 
